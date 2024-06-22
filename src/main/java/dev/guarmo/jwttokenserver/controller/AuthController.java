@@ -1,5 +1,6 @@
 package dev.guarmo.jwttokenserver.controller;
 
+import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.security.TokenService;
@@ -24,5 +25,8 @@ public class AuthController {
         return tokenService.generateToken(authentication);
     }
 
-
+    @PostMapping("/register")
+    public UserCredentials addUser(@RequestBody PostUserDto postUserDto) {
+        return userService.addUser(postUserDto, RoleStatus.ADMIN);
+    }
 }

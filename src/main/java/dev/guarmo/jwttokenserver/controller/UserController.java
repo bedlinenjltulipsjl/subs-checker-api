@@ -1,7 +1,9 @@
 package dev.guarmo.jwttokenserver.controller;
 
+import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
+import dev.guarmo.jwttokenserver.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserController {
+    private final UserService userService;
+
     @GetMapping("reflink")
     public String check1(Authentication authentication) {
         return "Hallo Numa Numa 1";
@@ -17,8 +21,7 @@ public class UserController {
 
     @PostMapping("/register")
     public UserCredentials addUser(@RequestBody PostUserDto postUserDto) {
-        return null;
-//        return userService.addUser(userCredentials);
+        return userService.addUser(postUserDto, RoleStatus.USER);
     }
 
     @GetMapping("/reftree")

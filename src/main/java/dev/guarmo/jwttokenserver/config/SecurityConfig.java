@@ -31,8 +31,8 @@ public class SecurityConfig {
 
     @Value("${jwt.key}")
     private String jwtKey;
-    @Value("${bot.access}")
-    private String botAccessCode;
+//    @Value("${bot.access}")
+//    private String botAccessCode;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -53,6 +53,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/pay/ipn").permitAll()
+                        .requestMatchers("/auth/register").permitAll()
                         .requestMatchers("/auth/token").authenticated()
                         .anyRequest().hasAnyAuthority("SCOPE_USER", "SCOPE_ADMIN")
                 )
