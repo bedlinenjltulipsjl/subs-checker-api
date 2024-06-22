@@ -38,7 +38,7 @@ public class Invoice {
     private String destTag;
 
     @JsonIgnore
-    private Long label;
+    private String label;
 
     @JsonIgnore
     private String email;

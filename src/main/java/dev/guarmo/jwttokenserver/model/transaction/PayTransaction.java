@@ -18,7 +18,7 @@ public class PayTransaction {
     private Double amount;
     private String address;
     private String destTag;
-    private Long label;
+    private String label;
     private String currency;
     private String status;
     private Integer blockchainConfirmations;

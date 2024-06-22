@@ -12,5 +12,4 @@ public class GetUserCredentialsDto {
     private String login;
     private RoleStatus role;
     private LocalDateTime createdAt;
-    private Long userContentId;
 }

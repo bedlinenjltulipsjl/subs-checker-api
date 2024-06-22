@@ -13,5 +13,4 @@ public class GetContentUserDto {
     private String username;
     private Double balanceAmount;
     private List<Long> transactionIds;
-    private Long userContentId;
 }

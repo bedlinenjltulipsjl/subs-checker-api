@@ -1,5 +1,6 @@
 package dev.guarmo.jwttokenserver.model.user;
 
+import dev.guarmo.jwttokenserver.model.transaction.PayTransaction;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,8 +30,15 @@ public class UserCredentials implements UserDetails {
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserContent userContent;
+    private String name;
+    private String username;
+    private double balanceAmount;
+    @OneToMany
+    private List<PayTransaction> transactions;
+    @ManyToOne
+    private UserCredentials upperReferral;
+    @OneToMany
+    private List<UserCredentials> bottomReferrals;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

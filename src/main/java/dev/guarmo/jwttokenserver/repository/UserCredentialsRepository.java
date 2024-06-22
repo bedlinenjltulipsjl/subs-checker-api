@@ -7,6 +7,4 @@ import java.util.Optional;
 
 public interface UserCredentialsRepository extends CrudRepository<UserCredentials, String> {
     Optional<UserCredentials> findByLogin(String login);
-
-    Optional<UserCredentials> findByUserContentId(Long userContentId);
 }

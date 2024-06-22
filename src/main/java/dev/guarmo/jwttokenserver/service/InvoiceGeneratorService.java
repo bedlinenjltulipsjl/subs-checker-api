@@ -37,11 +37,11 @@ public class InvoiceGeneratorService {
     @Value("${westwallet.secretkey}")
     private String secretKeyString;
 
-    public GetInvoiceDto generateInvoicePageObject(Long userContentId, String cryptoCurrencyType, Double topUpAmount, String email) {
-        String string = generateInvoicePagePostRequestResponse(userContentId, cryptoCurrencyType, topUpAmount);
+    public GetInvoiceDto generateInvoicePageObject(String userLogin, String cryptoCurrencyType, Double topUpAmount, String email) {
+        String string = generateInvoicePagePostRequestResponse(userLogin, cryptoCurrencyType, topUpAmount);
         try {
             Invoice invoice = invoiceMapper.getInvoiceFromJson(string);
-            invoice.setLabel(userContentId);
+            invoice.setLabel(userLogin);
             invoice.setEmail(email);
             invoiceRepository.save(invoice);
             return invoiceMapper.toGetDto(invoice);
@@ -51,15 +51,15 @@ public class InvoiceGeneratorService {
         }
     }
 
-    private String generateInvoicePagePostRequestResponse(Long userContentId, String cryptoCurrencyType, Double topUpAmount) {
+    private String generateInvoicePagePostRequestResponse(String userLogin, String cryptoCurrencyType, Double topUpAmount) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             String timestamp = String.valueOf(Instant.now().getEpochSecond());; // Replace with your actual timestamp
 
             // URL and JSON data for creating invoice
             String url = "https://api.westwallet.io/address/create_invoice";
             String json = """
-                {"currencies": ["%s"], "amount": "%.2f", "ipn_url": "https://teslainvestgroup.com:6090/pay/ipn", "success_url": "https://www.youtube.com/", "ttl": 15, "label": "%d"}""";
-            json = String.format(Locale.US, json, cryptoCurrencyType, topUpAmount, userContentId);
+                {"currencies": ["%s"], "amount": "%.2f", "ipn_url": "https://teslainvestgroup.com:6090/pay/ipn", "success_url": "https://www.youtube.com/", "ttl": 15, "label": "%s"}""";
+            json = String.format(Locale.US, json, cryptoCurrencyType, topUpAmount, userLogin);
 
             String dataToEncodeForHeader = timestamp + json;
 
@@ -86,10 +86,10 @@ public class InvoiceGeneratorService {
                 HttpEntity responseEntity = response.getEntity();
                 if (responseEntity != null) {
                     String responseBody = EntityUtils.toString(responseEntity);
-                    log.info("Response Body after sending POST request to get invoice link: {} {}", statusCode, responseBody);
+                    log.info("Response Body and Request Body after sending POST request to get invoice link: {} {} {}", statusCode, responseBody, json);
                     return responseBody;
                 } else {
-                    log.error("Response Entity is null after sending POST request to get invoice link: {} {}", statusCode, response);
+                    log.error("Response Entity is null after sending POST request to get invoice link: {} {} {}", statusCode, response, json);
                     throw new Exception("Response entity is null");
                 }
             }

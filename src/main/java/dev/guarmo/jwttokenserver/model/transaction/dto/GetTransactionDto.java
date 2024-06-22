@@ -12,7 +12,7 @@ public class GetTransactionDto {
     private Double amount;
     private String address;
     private String destTag;
-    private Long ownerId; // Just marker, no relations in DB
+    private String label; // Just marker, no relations in DB
     private String currency;
     private String status;
     private Integer blockchainConfirmations;
