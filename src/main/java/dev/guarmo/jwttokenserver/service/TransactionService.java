@@ -21,16 +21,19 @@ public class TransactionService {
     private final UserContentRepository userContentRepo;
 
     public GetTransactionDto addTransactionToUser(MultiValueMap<String, String> formData) {
+        // Take transaction values from data send to us from west wallet
         PostTransactionDto postTranDto = transactionMapper.toPostModel(formData);
+
         PayTransaction savedTran = tranRepo.save(transactionMapper.toModel(postTranDto));
+        // We save in label user content details
         UserContent userContent = userContentRepo
-                .findById(postTranDto.getOwnerId()).orElseThrow();
+                .findById(postTranDto.getLabel()).orElseThrow();
 
         List<PayTransaction> transactions = userContent.getTransactions();
         transactions.add(savedTran);
         userContent.setTransactions(transactions);
-        userContentRepo.save(userContent);
 
+        userContentRepo.save(userContent);
         return transactionMapper.toGetDto(savedTran);
     }
 }

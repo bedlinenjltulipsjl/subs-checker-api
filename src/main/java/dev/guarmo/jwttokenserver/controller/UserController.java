@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("reflink")
-    public String check1(Authentication authentication) {
+    @GetMapping("/reflink/{userTelegramId}")
+    public String check1(@PathVariable String userTelegramId) {
         return "Hallo Numa Numa 1";
     }
 

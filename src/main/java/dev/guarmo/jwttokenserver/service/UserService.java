@@ -1,8 +1,8 @@
 package dev.guarmo.jwttokenserver.service;
 
 import dev.guarmo.jwttokenserver.model.user.RoleStatus;
-import dev.guarmo.jwttokenserver.model.user.UserContent;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
+import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.model.user.mapper.UserMapper;
 import dev.guarmo.jwttokenserver.repository.UserContentRepository;
@@ -24,8 +24,11 @@ public class UserService {
         model.setRole(role);
         model.setPassword(passwordEncoder.encode(user.getPassword()));
 
-//        UserContent savedUserContent = userContentRepository.save(new UserContent());
-//        model.setUserContent(savedUserContent);
         return repository.save(model);
+    }
+
+    public GetUserCredentialsDto getByCredentialsByLogin(String login) {
+        UserCredentials userCredentials = repository.findByLogin(login).orElseThrow();
+        return userMapper.toGetCredentialsDto(userCredentials);
     }
 }

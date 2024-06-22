@@ -1,5 +1,6 @@
 package dev.guarmo.jwttokenserver.controller;
 
+import dev.guarmo.jwttokenserver.model.transaction.dto.GetTransactionDto;
 import dev.guarmo.jwttokenserver.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,9 @@ public class InstantPayNotifyController {
 
     @PostMapping(value = "/pay/ipn", consumes = "application/x-www-form-urlencoded")
     public ResponseEntity<String> handlePaymentNotification(@RequestBody MultiValueMap<String, String> formData) {
-        log.info("Received Payment Notification: {}", transactionService.addTransactionToUser(formData));
+        GetTransactionDto getTransactionDto = transactionService.addTransactionToUser(formData);
+
+        log.info("Received Payment Notification: {}", getTransactionDto);
         return ResponseEntity.ok("Thanks, notification received");
     }
 }

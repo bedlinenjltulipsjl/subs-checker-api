@@ -3,6 +3,7 @@ package dev.guarmo.jwttokenserver.model.user.mapper;
 import dev.guarmo.jwttokenserver.config.MapperConfig;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
+import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.GetUserWithReferralsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import org.mapstruct.Mapper;
@@ -12,6 +13,8 @@ import org.mapstruct.Named;
 @Mapper(config = MapperConfig.class)
 public interface UserMapper {
     GetContentUserDto toGetDto(UserCredentials user);
+    @Mapping(target = "userContentId", source = "userContent.id")
+    GetUserCredentialsDto toGetCredentialsDto(UserCredentials user);
 
     GetUserWithReferralsDto toGetWithReferralsDto(UserCredentials user);
 

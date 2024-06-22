@@ -15,7 +15,7 @@ public interface TransactionMapper {
         notification.setAmount(Double.parseDouble(formData.getFirst("amount")));
         notification.setAddress(formData.getFirst("address"));
         notification.setDestTag(formData.getFirst("dest_tag"));
-        notification.setOwnerId(Long.parseLong(formData.getFirst("label")));
+        notification.setLabel(Long.parseLong(formData.getFirst("label")));
         notification.setCurrency(formData.getFirst("currency"));
         notification.setStatus(formData.getFirst("status"));
         notification.setBlockchainConfirmations(Integer.parseInt(formData.getFirst("blockchain_confirmations")));
