@@ -10,6 +10,9 @@ import java.time.LocalDateTime;
 public class GetUserCredentialsDto {
     private String id;
     private String login;
+    private String name;
+    private String username;
+    private String upperReferralLogin;
     private RoleStatus role;
     private LocalDateTime createdAt;
 }

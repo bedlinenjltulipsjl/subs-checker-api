@@ -5,6 +5,7 @@ import dev.guarmo.jwttokenserver.model.invoice.Invoice;
 import dev.guarmo.jwttokenserver.model.invoice.dto.GetInvoiceDto;
 import dev.guarmo.jwttokenserver.model.invoice.mapper.InvoiceMapper;
 import dev.guarmo.jwttokenserver.repository.InvoiceRepository;
+import dev.guarmo.jwttokenserver.teleg.TelegramService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
@@ -32,6 +33,7 @@ public class InvoiceGeneratorService {
 
     private final InvoiceMapper invoiceMapper;
     private final InvoiceRepository invoiceRepository;
+    private final TelegramService telegramService;
     @Value("${westwallet.apikey}")
     private String apiKey;
     @Value("${westwallet.secretkey}")
@@ -43,8 +45,10 @@ public class InvoiceGeneratorService {
             Invoice invoice = invoiceMapper.getInvoiceFromJson(string);
             invoice.setLabel(userLogin);
             invoice.setEmail(email);
-            invoiceRepository.save(invoice);
-            return invoiceMapper.toGetDto(invoice);
+            invoice = invoiceRepository.save(invoice);
+            GetInvoiceDto getDto = invoiceMapper.toGetDto(invoice);
+            telegramService.sendNotificationAboutStartingInvoice(getDto);
+            return getDto;
         } catch (JsonProcessingException e) {
             log.error("Error while parsing json", e);
             throw new RuntimeException("Error while parsing json", e);

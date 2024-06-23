@@ -2,6 +2,7 @@ package dev.guarmo.jwttokenserver.controller;
 
 import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
+import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.security.TokenService;
 import dev.guarmo.jwttokenserver.service.UserService;
@@ -26,7 +27,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public UserCredentials addUser(@RequestBody PostUserDto postUserDto) {
+    public GetUserCredentialsDto addUser(@RequestBody PostUserDto postUserDto) {
+
+        // CHECK HERE AND ADD REFERRAL ABOVE SOME NOTIFICATION ABOUT USER REGISTRATION
+
         return userService.addUser(postUserDto, RoleStatus.ADMIN);
     }
 }

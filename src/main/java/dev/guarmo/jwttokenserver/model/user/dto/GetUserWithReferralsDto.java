@@ -14,6 +14,7 @@ public class GetUserWithReferralsDto {
     private String username;
     private Double balanceAmount;
     private List<Long> transactionIds;
+    private List<Long> withdrawIds;
     private UserCredentials upperReferral;
     private List<UserCredentials> bottomReferral;
 }

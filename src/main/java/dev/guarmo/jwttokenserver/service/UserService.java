@@ -10,6 +10,7 @@ import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.model.user.mapper.UserMapper;
 import dev.guarmo.jwttokenserver.repository.UserCredentialsRepository;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,12 +30,13 @@ public class UserService {
     @Value("${bot.link}")
     private String botLink;
 
-    public UserCredentials addUser(PostUserDto user, RoleStatus role) {
+    public GetUserCredentialsDto addUser(PostUserDto user, RoleStatus role) {
         UserCredentials model = userMapper.toModel(user);
         model.setRole(role);
         model.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        return repository.save(model);
+        UserCredentials save = repository.save(model);
+        return userMapper.toGetCredentialsDto(model);
     }
 
     public GetUserCredentialsDto getByCredentialsByLogin(String login) {

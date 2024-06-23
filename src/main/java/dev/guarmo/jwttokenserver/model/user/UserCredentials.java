@@ -1,6 +1,8 @@
 package dev.guarmo.jwttokenserver.model.user;
 
+import dev.guarmo.jwttokenserver.model.bonus.MoneyBonus;
 import dev.guarmo.jwttokenserver.model.transaction.PayTransaction;
+import dev.guarmo.jwttokenserver.model.withdraw.MoneyWithdraw;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +37,12 @@ public class UserCredentials implements UserDetails {
     private double balanceAmount;
     @OneToMany
     private List<PayTransaction> transactions;
+    @OneToMany
+    private List<MoneyWithdraw> withdraws;
+    @OneToMany
+    private List<MoneyBonus> bonuses;
+    @OneToMany
+    private List<Purchase> purchases;
     @ManyToOne
     private UserCredentials upperReferral;
     @OneToMany

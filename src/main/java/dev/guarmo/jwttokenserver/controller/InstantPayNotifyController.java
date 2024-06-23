@@ -22,6 +22,8 @@ public class InstantPayNotifyController {
     public ResponseEntity<String> handlePaymentNotification(@RequestBody MultiValueMap<String, String> formData) {
         GetTransactionDto getTransactionDto = transactionService.addTransactionToUser(formData);
 
+        // FIND UPPER REFERRAL AND ADD SOME BALANCE TO HIM, FIND UPPER REFERRAL OF UPPER REFERRAL AND ADD SOME BONUS TO HIM TOO
+
         log.info("Received Payment Notification: {}", getTransactionDto);
         return ResponseEntity.ok("Thanks, notification received");
     }
