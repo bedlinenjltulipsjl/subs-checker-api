@@ -31,7 +31,7 @@
 
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.orElseThrow(Optional.java:377) ~[na:na]
-	at dev.guarmo.jwttokenserver.service.TransactionService.addTransactionToUser(TransactionService.java:30) ~[classes/:na]
+	at dev.guarmo.jwttokenserver.service.DepositService.addTransactionToUser(TransactionService.java:30) ~[classes/:na]
 	at dev.guarmo.jwttokenserver.controller.InstantPayNotifyController.handlePaymentNotification(InstantPayNotifyController.java:31) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
@@ -171,7 +171,7 @@ java.util.NoSuchElementException: No value present
 
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.orElseThrow(Optional.java:377) ~[na:na]
-	at dev.guarmo.jwttokenserver.service.TransactionService.addTransactionToUser(TransactionService.java:30) ~[classes/:na]
+	at dev.guarmo.jwttokenserver.service.DepositService.addTransactionToUser(TransactionService.java:30) ~[classes/:na]
 	at dev.guarmo.jwttokenserver.controller.InstantPayNotifyController.handlePaymentNotification(InstantPayNotifyController.java:31) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
@@ -308,7 +308,7 @@ java.util.NoSuchElementException: No value present
 2024-06-24T00:44:24.201+03:00  INFO 22676 --- [jwt-token-server] [http-nio-6027-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-06-24T00:44:24.202+03:00  INFO 22676 --- [jwt-token-server] [http-nio-6027-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2024-06-24T00:44:25.054+03:00  INFO 22676 --- [jwt-token-server] [http-nio-6027-exec-3] d.g.j.c.InstantPayNotifyController       : Received Payment Notification: GetTransactionDto(id=3, transactionId=123123, amount=0.1, address=35NjwZg8T4F12ESdEo3rQeYQ8ZiTyDYoTJ, destTag=hello, label=user1234, currency=BTC, status=completed, blockchainConfirmations=1, fee=0.0001, blockchainHash=72648cefcc47b4371f28dc3328bc863918913eebf81b40d4a97d577b96c1ce53, createdAt=2024-06-24T00:44:24.273945)
-2024-06-24T00:44:25.055+03:00  INFO 22676 --- [jwt-token-server] [http-nio-6027-exec-3] d.g.j.c.InstantPayNotifyController       : Saved this bonus to this user: dev.guarmo.jwttokenserver.model.bonus.dto.GetBonusDto@30abb12e
+2024-06-24T00:44:25.055+03:00  INFO 22676 --- [jwt-token-server] [http-nio-6027-exec-3] d.g.j.c.InstantPayNotifyController       : Saved this bonus to this user: dev.guarmo.jwttokenserver.model.income.dto.GetIncomeDto@30abb12e
 2024-06-24T00:44:32.527+03:00  INFO 22676 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-06-24T00:44:32.530+03:00  INFO 22676 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-06-24T00:44:32.533+03:00  INFO 22676 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
@@ -431,7 +431,7 @@ insert into user_credentials_bonuses (user_credentials_id,bonuses_id) values (?,
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.8.jar:6.1.8]
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.8.jar:6.1.8]
 	at jdk.proxy2/jdk.proxy2.$Proxy127.save(Unknown Source) ~[na:na]
-	at dev.guarmo.jwttokenserver.service.BonusService.addBonusUpperReferrals(BonusService.java:41) ~[classes/:na]
+	at dev.guarmo.jwttokenserver.service.IncomeService.addBonusUpperReferrals(BonusService.java:41) ~[classes/:na]
 	at dev.guarmo.jwttokenserver.controller.InstantPayNotifyController.handlePaymentNotification(InstantPayNotifyController.java:28) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
@@ -627,7 +627,7 @@ insert into user_credentials_bonuses (user_credentials_id,bonuses_id) values (?,
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.8.jar:6.1.8]
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.8.jar:6.1.8]
 	at jdk.proxy2/jdk.proxy2.$Proxy127.save(Unknown Source) ~[na:na]
-	at dev.guarmo.jwttokenserver.service.BonusService.addBonusUpperReferrals(BonusService.java:41) ~[classes/:na]
+	at dev.guarmo.jwttokenserver.service.IncomeService.addBonusUpperReferrals(BonusService.java:41) ~[classes/:na]
 	at dev.guarmo.jwttokenserver.controller.InstantPayNotifyController.handlePaymentNotification(InstantPayNotifyController.java:28) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
@@ -796,7 +796,7 @@ insert into user_credentials_bonuses (user_credentials_id,bonuses_id) values (?,
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.8.jar:6.1.8]
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.8.jar:6.1.8]
 	at jdk.proxy2/jdk.proxy2.$Proxy127.save(Unknown Source) ~[na:na]
-	at dev.guarmo.jwttokenserver.service.BonusService.addBonusUpperReferrals(BonusService.java:41) ~[classes/:na]
+	at dev.guarmo.jwttokenserver.service.IncomeService.addBonusUpperReferrals(BonusService.java:41) ~[classes/:na]
 	at dev.guarmo.jwttokenserver.controller.InstantPayNotifyController.handlePaymentNotification(InstantPayNotifyController.java:28) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
@@ -1460,3 +1460,312 @@ java.util.NoSuchElementException: No value present
 2024-06-24T12:10:25.110+03:00  INFO 18444 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-06-24T12:10:25.113+03:00  INFO 18444 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-06-24T12:10:25.115+03:00  INFO 18444 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-24T12:57:15.910+03:00  INFO 26628 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : Starting JwtTokenServerApplication using Java 17.0.11 with PID 26628 (D:\Work\Java\jwt-token-server\target\classes started by bohdan in D:\Work\Java\jwt-token-server)
+2024-06-24T12:57:15.914+03:00  INFO 26628 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-06-24T12:57:17.577+03:00  INFO 26628 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-24T12:57:17.671+03:00  INFO 26628 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 5 JPA repository interfaces.
+2024-06-24T12:57:18.724+03:00  INFO 26628 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6027 (http)
+2024-06-24T12:57:18.745+03:00  INFO 26628 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-24T12:57:18.746+03:00  INFO 26628 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-24T12:57:18.861+03:00  INFO 26628 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-24T12:57:18.862+03:00  INFO 26628 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2898 ms
+2024-06-24T12:57:19.183+03:00  INFO 26628 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-24T12:57:19.310+03:00  INFO 26628 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-24T12:57:19.380+03:00  INFO 26628 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-24T12:57:19.789+03:00  INFO 26628 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-24T12:57:19.820+03:00  INFO 26628 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-24T12:57:20.094+03:00  INFO 26628 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./testdb user=SA
+2024-06-24T12:57:20.097+03:00  INFO 26628 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-24T12:57:20.151+03:00  WARN 26628 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-24T12:57:21.811+03:00  INFO 26628 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-24T12:57:21.931+03:00  INFO 26628 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-24T12:57:22.803+03:00  WARN 26628 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-24T12:57:22.834+03:00  INFO 26628 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-06-24T12:57:23.352+03:00  INFO 26628 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ca0aa55, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@51a8aed8, org.springframework.security.web.context.SecurityContextHolderFilter@1704437b, org.springframework.security.web.header.HeaderWriterFilter@cbd9494, org.springframework.web.filter.CorsFilter@1f13eabb, org.springframework.security.web.authentication.logout.LogoutFilter@3123ac1a, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@3299e315, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@386ec37d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3cb4f1a6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1651bd68, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cfe881a, org.springframework.security.web.session.SessionManagementFilter@427946b9, org.springframework.security.web.access.ExceptionTranslationFilter@39336f5, org.springframework.security.web.access.intercept.AuthorizationFilter@2aaed928]
+2024-06-24T12:57:23.861+03:00  INFO 26628 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6027 (http) with context path '/api'
+2024-06-24T12:57:25.038+03:00  INFO 26628 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : Started JwtTokenServerApplication in 9.717 seconds (process running for 10.473)
+2024-06-24T12:57:40.913+03:00  INFO 26628 --- [jwt-token-server] [http-nio-6027-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-24T12:57:40.914+03:00  INFO 26628 --- [jwt-token-server] [http-nio-6027-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-24T12:57:40.919+03:00  INFO 26628 --- [jwt-token-server] [http-nio-6027-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2024-06-24T13:00:03.000+03:00  INFO 26628 --- [jwt-token-server] [http-nio-6027-exec-7] d.g.j.c.InstantPayNotifyController       : Received Payment Notification: GetDepositDto(id=1, transactionId=123123, amount=0.1, address=35NjwZg8T4F12ESdEo3rQeYQ8ZiTyDYoTJ, destTag=hello, label=user123456, currency=BTC, status=completed, blockchainConfirmations=1, fee=0.0001, blockchainHash=72648cefcc47b4371f28dc3328bc863918913eebf81b40d4a97d577b96c1ce53, createdAt=2024-06-24T13:00:01.130302)
+2024-06-24T13:00:03.001+03:00  INFO 26628 --- [jwt-token-server] [http-nio-6027-exec-7] d.g.j.c.InstantPayNotifyController       : Saved this bonus to this user: [GetIncomeDto(id=1, bonusAmount=0.005000000000000001, createdAt=2024-06-24T13:00:01.177756, incomeCausedByUserTgName=gay123456, incomeSendToTgName=gay12345), GetIncomeDto(id=1, bonusAmount=0.005000000000000001, createdAt=2024-06-24T13:00:01.177756, incomeCausedByUserTgName=gay123456, incomeSendToTgName=gay12345)]
+2024-06-24T13:15:24.223+03:00  INFO 26628 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-24T13:15:24.226+03:00  INFO 26628 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-24T13:15:24.229+03:00  INFO 26628 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-24T13:15:29.888+03:00  INFO 28028 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : Starting JwtTokenServerApplication using Java 17.0.11 with PID 28028 (D:\Work\Java\jwt-token-server\target\classes started by bohdan in D:\Work\Java\jwt-token-server)
+2024-06-24T13:15:29.890+03:00  INFO 28028 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-06-24T13:15:30.836+03:00  INFO 28028 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-24T13:15:30.950+03:00  INFO 28028 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 5 JPA repository interfaces.
+2024-06-24T13:15:31.891+03:00  INFO 28028 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6027 (http)
+2024-06-24T13:15:31.911+03:00  INFO 28028 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-24T13:15:31.912+03:00  INFO 28028 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-24T13:15:32.025+03:00  INFO 28028 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-24T13:15:32.025+03:00  INFO 28028 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2093 ms
+2024-06-24T13:15:32.244+03:00  INFO 28028 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-24T13:15:32.319+03:00  INFO 28028 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-24T13:15:32.366+03:00  INFO 28028 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-24T13:15:32.733+03:00  INFO 28028 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-24T13:15:32.758+03:00  INFO 28028 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-24T13:15:33.040+03:00  INFO 28028 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./testdb user=SA
+2024-06-24T13:15:33.042+03:00  INFO 28028 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-24T13:15:33.069+03:00  WARN 28028 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-24T13:15:34.462+03:00  INFO 28028 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-24T13:15:34.533+03:00  INFO 28028 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-24T13:15:35.427+03:00  WARN 28028 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-24T13:15:35.467+03:00  INFO 28028 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-06-24T13:15:35.947+03:00  INFO 28028 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@781ecbac, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5cb654e3, org.springframework.security.web.context.SecurityContextHolderFilter@4bacabc4, org.springframework.security.web.header.HeaderWriterFilter@fe58644, org.springframework.web.filter.CorsFilter@3f89d36c, org.springframework.security.web.authentication.logout.LogoutFilter@155cf9f6, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@d140627, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@179e8859, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@617d697, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38c9e937, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@520034a, org.springframework.security.web.session.SessionManagementFilter@1651bd68, org.springframework.security.web.access.ExceptionTranslationFilter@418f0f27, org.springframework.security.web.access.intercept.AuthorizationFilter@3204146d]
+2024-06-24T13:15:36.457+03:00  INFO 28028 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6027 (http) with context path '/api'
+2024-06-24T13:15:37.152+03:00  INFO 28028 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : Started JwtTokenServerApplication in 7.661 seconds (process running for 8.263)
+2024-06-24T13:18:55.951+03:00  INFO 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Read timed out
+
+java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:288) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:314) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:484) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:478) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1465) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1069) ~[na:na]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137) ~[httpcore-4.4.16.jar:4.4.16]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153) ~[httpcore-4.4.16.jar:4.4.16]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280) ~[httpcore-4.4.16.jar:4.4.16]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.16.jar:4.4.16]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163) ~[httpcore-4.4.16.jar:4.4.16]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.16.jar:4.4.16]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.16.jar:4.4.16]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:08.622+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : No such host is known (api.telegram.org)
+
+java.net.UnknownHostException: No such host is known (api.telegram.org)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:934) ~[na:na]
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:852) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:08.941+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : api.telegram.org
+
+java.net.UnknownHostException: api.telegram.org
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:801) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:09.688+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : api.telegram.org
+
+java.net.UnknownHostException: api.telegram.org
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:801) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:11.372+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : api.telegram.org
+
+java.net.UnknownHostException: api.telegram.org
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:801) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:13.285+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : api.telegram.org
+
+java.net.UnknownHostException: api.telegram.org
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:801) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:17.022+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : api.telegram.org
+
+java.net.UnknownHostException: api.telegram.org
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:801) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:31.402+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : No such host is known (api.telegram.org)
+
+java.net.UnknownHostException: No such host is known (api.telegram.org)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:934) ~[na:na]
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:852) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:39.614+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : api.telegram.org
+
+java.net.UnknownHostException: api.telegram.org
+	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:801) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:19:58.878+03:00 ERROR 28028 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : No such host is known (api.telegram.org)
+
+java.net.UnknownHostException: No such host is known (api.telegram.org)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:934) ~[na:na]
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:852) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1385) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1306) ~[na:na]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:250) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-24T13:52:14.811+03:00  INFO 30404 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : Starting JwtTokenServerApplication using Java 17.0.11 with PID 30404 (D:\Work\Java\jwt-token-server\target\classes started by bohdan in D:\Work\Java\jwt-token-server)
+2024-06-24T13:52:14.813+03:00  INFO 30404 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-06-24T13:52:16.272+03:00  INFO 30404 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-24T13:52:16.351+03:00  INFO 30404 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 5 JPA repository interfaces.
+2024-06-24T13:52:17.037+03:00  INFO 30404 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6027 (http)
+2024-06-24T13:52:17.051+03:00  INFO 30404 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-24T13:52:17.052+03:00  INFO 30404 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-24T13:52:17.121+03:00  INFO 30404 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-24T13:52:17.122+03:00  INFO 30404 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2249 ms
+2024-06-24T13:52:17.329+03:00  INFO 30404 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-24T13:52:17.404+03:00  INFO 30404 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-24T13:52:17.448+03:00  INFO 30404 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-24T13:52:17.810+03:00  INFO 30404 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-24T13:52:17.840+03:00  INFO 30404 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-24T13:52:18.104+03:00  INFO 30404 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./testdb user=SA
+2024-06-24T13:52:18.106+03:00  INFO 30404 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-24T13:52:18.144+03:00  WARN 30404 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-24T13:52:19.361+03:00  INFO 30404 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-24T13:52:19.446+03:00  INFO 30404 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-24T13:52:20.255+03:00  WARN 30404 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-24T13:52:20.281+03:00  INFO 30404 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-06-24T13:52:20.672+03:00  INFO 30404 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@41acf2f1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66f88fd3, org.springframework.security.web.context.SecurityContextHolderFilter@155cf9f6, org.springframework.security.web.header.HeaderWriterFilter@16baf8d0, org.springframework.web.filter.CorsFilter@87cb1d8, org.springframework.security.web.authentication.logout.LogoutFilter@58c48a23, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@329b4b8b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1fae388c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2db07651, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ab1693b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14d7a962, org.springframework.security.web.session.SessionManagementFilter@4a5a8c6f, org.springframework.security.web.access.ExceptionTranslationFilter@12e04531, org.springframework.security.web.access.intercept.AuthorizationFilter@759862a2]
+2024-06-24T13:52:21.095+03:00  INFO 30404 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6027 (http) with context path '/api'
+2024-06-24T13:52:22.180+03:00  INFO 30404 --- [jwt-token-server] [main] d.g.j.JwtTokenServerApplication          : Started JwtTokenServerApplication in 7.874 seconds (process running for 8.68)
+2024-06-24T13:53:05.579+03:00  INFO 30404 --- [jwt-token-server] [http-nio-6027-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-24T13:53:05.580+03:00  INFO 30404 --- [jwt-token-server] [http-nio-6027-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-24T13:53:05.582+03:00  INFO 30404 --- [jwt-token-server] [http-nio-6027-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-24T13:53:06.776+03:00  INFO 30404 --- [jwt-token-server] [http-nio-6027-exec-1] d.g.j.c.InstantPayNotifyController       : Received Payment Notification: GetDepositDto(id=2, transactionId=123123, amount=0.1, address=35NjwZg8T4F12ESdEo3rQeYQ8ZiTyDYoTJ, destTag=hello, label=user123456, currency=BTC, status=completed, blockchainConfirmations=1, fee=0.0001, blockchainHash=72648cefcc47b4371f28dc3328bc863918913eebf81b40d4a97d577b96c1ce53, createdAt=2024-06-24T13:53:05.688846)
+2024-06-24T13:53:06.776+03:00  INFO 30404 --- [jwt-token-server] [http-nio-6027-exec-1] d.g.j.c.InstantPayNotifyController       : Saved this bonus to this user: [GetIncomeDto(id=3, bonusAmount=0.005000000000000001, createdAt=2024-06-24T13:53:06.000434, incomeCausedByUserTgName=gay123456, incomeSendToTgName=gay12345), GetIncomeDto(id=4, bonusAmount=0.0025000000000000005, createdAt=2024-06-24T13:53:06.011757, incomeCausedByUserTgName=gay123456, incomeSendToTgName=gay12345)]
+2024-06-24T13:56:39.560+03:00  INFO 30404 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-24T13:56:39.566+03:00  INFO 30404 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-24T13:56:39.569+03:00  INFO 30404 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

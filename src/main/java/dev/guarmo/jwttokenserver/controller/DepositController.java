@@ -2,10 +2,10 @@ package dev.guarmo.jwttokenserver.controller;
 
 import dev.guarmo.jwttokenserver.model.invoice.dto.GenerateInvoiceDto;
 import dev.guarmo.jwttokenserver.model.invoice.dto.GetInvoiceDto;
-import dev.guarmo.jwttokenserver.model.transaction.dto.GetTransactionDto;
+import dev.guarmo.jwttokenserver.model.deposit.dto.GetDepositDto;
 import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.service.InvoiceGeneratorService;
-import dev.guarmo.jwttokenserver.service.TransactionService;
+import dev.guarmo.jwttokenserver.service.DepositService;
 import dev.guarmo.jwttokenserver.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +13,15 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/tran")
-public class TransactionController {
+@RequestMapping("/deposits")
+public class DepositController {
     private final InvoiceGeneratorService invoiceGeneratorService;
     private final UserService userService;
-    private final TransactionService transactionService;
+    private final DepositService depositService;
 
     @GetMapping("/{tgid}")
-    public List<GetTransactionDto> getAllTransactionsFromUser(@PathVariable String tgid) {
-        return transactionService.findAllTransactionsByLogin(tgid);
+    public List<GetDepositDto> getAllTransactionsFromUser(@PathVariable String tgid) {
+        return depositService.findAllTransactionsByLogin(tgid);
     }
 
     @PostMapping("/getlink")

@@ -1,4 +1,4 @@
-package dev.guarmo.jwttokenserver.model.bonus.mapper;
+package dev.guarmo.jwttokenserver.model.income.mapper;
 
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.repository.UserCredentialsRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BonusMapperHelper {
+public class IncomeMapperHelper {
     private final UserCredentialsRepository userCredentialsRepository;
 
     @Named("createUserFromLogin")

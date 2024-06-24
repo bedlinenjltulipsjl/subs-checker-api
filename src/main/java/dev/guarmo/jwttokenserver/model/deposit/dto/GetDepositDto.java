@@ -1,12 +1,11 @@
-package dev.guarmo.jwttokenserver.model.transaction.dto;
+package dev.guarmo.jwttokenserver.model.deposit.dto;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 @Data
-public class GetTransactionDto {
+public class GetDepositDto {
     private Long id;
     private Long transactionId;
     private Double amount;

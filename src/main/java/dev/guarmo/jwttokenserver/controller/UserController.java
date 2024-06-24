@@ -4,7 +4,7 @@ import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
 import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
-import dev.guarmo.jwttokenserver.service.TransactionService;
+import dev.guarmo.jwttokenserver.service.DepositService;
 import dev.guarmo.jwttokenserver.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-    private final TransactionService transactionService;
+    private final DepositService depositService;
 
     @GetMapping("/reflink/{userTelegramId}")
     public String generateReferralLinkForUser(@PathVariable String userTelegramId) {

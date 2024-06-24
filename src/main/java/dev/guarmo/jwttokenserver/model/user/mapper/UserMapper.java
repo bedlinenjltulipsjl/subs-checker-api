@@ -1,16 +1,15 @@
 package dev.guarmo.jwttokenserver.model.user.mapper;
 
 import dev.guarmo.jwttokenserver.config.MapperConfig;
-import dev.guarmo.jwttokenserver.model.bonus.MoneyBonus;
+import dev.guarmo.jwttokenserver.model.income.Income;
 import dev.guarmo.jwttokenserver.model.purchase.Purchase;
-import dev.guarmo.jwttokenserver.model.transaction.PayTransaction;
+import dev.guarmo.jwttokenserver.model.deposit.Deposit;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
 import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.GetUserWithReferralsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.model.withdraw.MoneyWithdraw;
-import dev.guarmo.jwttokenserver.service.UserService;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -23,16 +22,15 @@ public interface UserMapper {
     @Mapping(target = "upperReferral", source = "referralLogin", qualifiedByName = "mapUpperReferralByLogin")
     UserCredentials toModel(PostUserDto postUserDto);
 
-    @Mapping(target = "transactionIds", ignore = true)
     GetContentUserDto toGetDto(UserCredentials user);
     @AfterMapping
     default void initArraysWithIdsAfterMapping(@MappingTarget GetContentUserDto dto,
                                       UserCredentials model) {
-        List<Long> transactionIds = model.getTransactions()
+        List<Long> depositIds = model.getDeposits()
                 .stream()
-                .map(PayTransaction::getId)
+                .map(Deposit::getId)
                 .toList();
-        dto.setTransactionIds(transactionIds);
+        dto.setDepositIds(depositIds);
 
         List<Long> withdrawIds = model.getWithdraws()
                 .stream()
@@ -46,11 +44,11 @@ public interface UserMapper {
                 .toList();
         dto.setPurchaseIds(purchaseIds);
 
-        List<Long> bonusesIds = model.getBonuses()
+        List<Long> incomeIds = model.getIncomes()
                 .stream()
-                .map(MoneyBonus::getId)
+                .map(Income::getId)
                 .toList();
-        dto.setBonusesIds(bonusesIds);
+        dto.setIncomeIds(incomeIds);
     }
 
     GetUserWithReferralsDto toGetWithReferralsDto(UserCredentials user);

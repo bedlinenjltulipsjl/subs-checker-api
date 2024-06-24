@@ -1,16 +1,16 @@
-package dev.guarmo.jwttokenserver.model.transaction.mapper;
+package dev.guarmo.jwttokenserver.model.deposit.mapper;
 
 import dev.guarmo.jwttokenserver.config.MapperConfig;
-import dev.guarmo.jwttokenserver.model.transaction.PayTransaction;
-import dev.guarmo.jwttokenserver.model.transaction.dto.GetTransactionDto;
-import dev.guarmo.jwttokenserver.model.transaction.dto.PostTransactionDto;
+import dev.guarmo.jwttokenserver.model.deposit.Deposit;
+import dev.guarmo.jwttokenserver.model.deposit.dto.GetDepositDto;
+import dev.guarmo.jwttokenserver.model.deposit.dto.PostDepositDto;
 import org.mapstruct.Mapper;
 import org.springframework.util.MultiValueMap;
 
 @Mapper(config = MapperConfig.class)
-public interface TransactionMapper {
-    default PostTransactionDto toPostModel(MultiValueMap<String, String> formData) {
-        PostTransactionDto notification = new PostTransactionDto();
+public interface DepositMapper {
+    default PostDepositDto toPostModel(MultiValueMap<String, String> formData) {
+        PostDepositDto notification = new PostDepositDto();
         notification.setTransactionId(Long.parseLong(formData.getFirst("id")));
         notification.setAmount(Double.parseDouble(formData.getFirst("amount")));
         notification.setAddress(formData.getFirst("address"));
@@ -24,7 +24,7 @@ public interface TransactionMapper {
         return notification;
     }
 
-    GetTransactionDto toGetDto(PayTransaction user);
+    GetDepositDto toGetDto(Deposit user);
 
-    PayTransaction toModel(PostTransactionDto crmUserDto);
+    Deposit toModel(PostDepositDto crmUserDto);
 }

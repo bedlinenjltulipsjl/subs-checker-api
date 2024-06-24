@@ -13,8 +13,8 @@ public class GetContentUserDto {
     private String name;
     private String username;
     private Double balanceAmount;
-    private List<Long> transactionIds;
+    private List<Long> depositIds;
     private List<Long> withdrawIds;
-    private List<Long> bonusesIds;
+    private List<Long> incomeIds;
     private List<Long> purchaseIds;
 }

@@ -1,11 +1,11 @@
-package dev.guarmo.jwttokenserver.model.transaction.dto;
+package dev.guarmo.jwttokenserver.model.deposit.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class PostTransactionDto {
+public class PostDepositDto {
     private Long transactionId;
     private Double amount;
     private String address;

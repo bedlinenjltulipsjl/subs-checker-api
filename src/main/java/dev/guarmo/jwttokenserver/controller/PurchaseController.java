@@ -1,6 +1,7 @@
 package dev.guarmo.jwttokenserver.controller;
 
 import dev.guarmo.jwttokenserver.model.purchase.dto.GetPurchaseDto;
+import dev.guarmo.jwttokenserver.model.purchase.dto.PostPurchaseDto;
 import dev.guarmo.jwttokenserver.model.withdraw.dto.GetWithdrawDto;
 import dev.guarmo.jwttokenserver.service.PurchaseService;
 import dev.guarmo.jwttokenserver.service.WithdrawService;
@@ -17,5 +18,10 @@ public class PurchaseController {
     @GetMapping("/{tgid}")
     public List<GetPurchaseDto> getPurchaseDtoList(@PathVariable String tgid) {
         return purchaseService.getPurchaseDtoList(tgid);
+    }
+
+    @PostMapping("/{tgid}")
+    public GetPurchaseDto addPurchaseToUser(@RequestBody PostPurchaseDto purchase, @PathVariable String tgid) {
+        return purchaseService.addPurchaseToUser(purchase, tgid);
     }
 }

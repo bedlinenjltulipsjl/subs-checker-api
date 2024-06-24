@@ -1,10 +1,9 @@
 package dev.guarmo.jwttokenserver.teleg;
 
-import dev.guarmo.jwttokenserver.model.bonus.dto.GetBonusDto;
+import dev.guarmo.jwttokenserver.model.income.dto.GetIncomeDto;
 import dev.guarmo.jwttokenserver.model.invoice.dto.GetInvoiceDto;
-import dev.guarmo.jwttokenserver.model.transaction.dto.GetTransactionDto;
+import dev.guarmo.jwttokenserver.model.deposit.dto.GetDepositDto;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
-import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.withdraw.dto.GetWithdrawDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,13 +28,18 @@ public class TelegramService {
         bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
     }
 
-    public void sendNotificationAboutSuccessTransaction(GetTransactionDto dto) {
+    public void sendNotificationAboutSuccessTransaction(GetDepositDto dto) {
         String text = dto.toString();
 
         bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
     }
 
-    public void sendNotificationAboutAssignedBonus(GetBonusDto dto) {
+    public void sendNotificationAboutAssignedBonus(GetIncomeDto dto) {
+        String text = dto.toString();
+        bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
+    }
+
+    public void sendNotificationAboutUserBuying(GetIncomeDto dto) {
         String text = dto.toString();
         bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
     }

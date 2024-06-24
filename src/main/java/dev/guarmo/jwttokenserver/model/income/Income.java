@@ -1,17 +1,16 @@
-package dev.guarmo.jwttokenserver.model.bonus;
+package dev.guarmo.jwttokenserver.model.income;
 
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-public class MoneyBonus {
+public class Income {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,5 +19,5 @@ public class MoneyBonus {
     @CreationTimestamp
     private LocalDateTime createdAt;
     @ManyToOne
-    private UserCredentials bonusFrom;
+    private UserCredentials incomeCausedByUser;
 }

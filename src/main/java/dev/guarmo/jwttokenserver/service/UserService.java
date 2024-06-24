@@ -1,7 +1,6 @@
 package dev.guarmo.jwttokenserver.service;
 
-import dev.guarmo.jwttokenserver.model.transaction.dto.GetTransactionDto;
-import dev.guarmo.jwttokenserver.model.transaction.mapper.TransactionMapper;
+import dev.guarmo.jwttokenserver.model.deposit.mapper.DepositMapper;
 import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
@@ -10,14 +9,12 @@ import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.model.user.mapper.UserMapper;
 import dev.guarmo.jwttokenserver.repository.UserCredentialsRepository;
 import lombok.RequiredArgsConstructor;
-import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +22,7 @@ public class UserService {
     private final UserCredentialsRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
-    private final TransactionMapper transactionMapper;
+    private final DepositMapper depositMapper;
     private final UserCredentialsRepository userCredentialsRepository;
     @Value("${bot.link}")
     private String botLink;
