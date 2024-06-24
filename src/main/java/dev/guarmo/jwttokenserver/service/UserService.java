@@ -53,8 +53,7 @@ public class UserService {
         return userMapper.toGetDto(userCredentials);
     }
 
-    public List<GetTransactionDto> findAllTransactionsByLogin(String login) {
-        UserCredentials userCredentials = repository.findByLogin(login).orElseThrow();
-        return userCredentials.getTransactions().stream().map(transactionMapper::toGetDto).toList();
+    public UserCredentials findByLoginModel(String tgid) {
+        return userCredentialsRepository.findByLogin(tgid).orElseThrow();
     }
 }

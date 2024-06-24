@@ -15,4 +15,6 @@ public class GetContentUserDto {
     private Double balanceAmount;
     private List<Long> transactionIds;
     private List<Long> withdrawIds;
+    private List<Long> bonusesIds;
+    private List<Long> purchaseIds;
 }

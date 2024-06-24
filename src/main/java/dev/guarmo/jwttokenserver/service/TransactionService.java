@@ -43,4 +43,9 @@ public class TransactionService {
                 .map(transactionMapper::toGetDto)
                 .toList();
     }
+
+    public List<GetTransactionDto> findAllTransactionsByLogin(String login) {
+        UserCredentials userCredentials = userCredentialsRepository.findByLogin(login).orElseThrow();
+        return userCredentials.getTransactions().stream().map(transactionMapper::toGetDto).toList();
+    }
 }

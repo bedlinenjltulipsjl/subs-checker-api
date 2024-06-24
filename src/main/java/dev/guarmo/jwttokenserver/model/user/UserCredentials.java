@@ -1,6 +1,7 @@
 package dev.guarmo.jwttokenserver.model.user;
 
 import dev.guarmo.jwttokenserver.model.bonus.MoneyBonus;
+import dev.guarmo.jwttokenserver.model.purchase.Purchase;
 import dev.guarmo.jwttokenserver.model.transaction.PayTransaction;
 import dev.guarmo.jwttokenserver.model.withdraw.MoneyWithdraw;
 import jakarta.persistence.*;

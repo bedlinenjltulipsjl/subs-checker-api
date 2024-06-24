@@ -15,7 +15,7 @@ public class WithdrawController {
     private final WithdrawService withdrawService;
 
     @PostMapping("/{tgid}")
-    public GetWithdrawDto generateInvoiceLink(@RequestBody PostWithdrawDto postWithdrawDto, @PathVariable String tgid) {
+    public GetWithdrawDto addWithdrawRequest(@RequestBody PostWithdrawDto postWithdrawDto, @PathVariable String tgid) {
         return withdrawService.addWithdrawRequest(postWithdrawDto, tgid);
     }
 

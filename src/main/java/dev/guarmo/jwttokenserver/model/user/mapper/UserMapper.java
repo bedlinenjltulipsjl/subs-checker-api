@@ -1,6 +1,8 @@
 package dev.guarmo.jwttokenserver.model.user.mapper;
 
 import dev.guarmo.jwttokenserver.config.MapperConfig;
+import dev.guarmo.jwttokenserver.model.bonus.MoneyBonus;
+import dev.guarmo.jwttokenserver.model.purchase.Purchase;
 import dev.guarmo.jwttokenserver.model.transaction.PayTransaction;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
@@ -37,6 +39,18 @@ public interface UserMapper {
                 .map(MoneyWithdraw::getId)
                 .toList();
         dto.setWithdrawIds(withdrawIds);
+
+        List<Long> purchaseIds = model.getPurchases()
+                .stream()
+                .map(Purchase::getId)
+                .toList();
+        dto.setPurchaseIds(purchaseIds);
+
+        List<Long> bonusesIds = model.getBonuses()
+                .stream()
+                .map(MoneyBonus::getId)
+                .toList();
+        dto.setBonusesIds(bonusesIds);
     }
 
     GetUserWithReferralsDto toGetWithReferralsDto(UserCredentials user);

@@ -14,7 +14,6 @@ public class MoneyWithdraw {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Double withdrawAmount;
     private String currency;
     private String cryptoAddress;

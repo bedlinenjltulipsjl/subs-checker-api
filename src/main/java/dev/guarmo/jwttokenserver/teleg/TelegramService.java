@@ -1,5 +1,6 @@
 package dev.guarmo.jwttokenserver.teleg;
 
+import dev.guarmo.jwttokenserver.model.bonus.dto.GetBonusDto;
 import dev.guarmo.jwttokenserver.model.invoice.dto.GetInvoiceDto;
 import dev.guarmo.jwttokenserver.model.transaction.dto.GetTransactionDto;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
@@ -31,6 +32,11 @@ public class TelegramService {
     public void sendNotificationAboutSuccessTransaction(GetTransactionDto dto) {
         String text = dto.toString();
 
+        bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
+    }
+
+    public void sendNotificationAboutAssignedBonus(GetBonusDto dto) {
+        String text = dto.toString();
         bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
     }
 }
