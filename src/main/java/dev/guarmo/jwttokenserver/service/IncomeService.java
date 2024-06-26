@@ -37,6 +37,7 @@ public class IncomeService {
 
         income1.setBonusAmount(amount*referralLvl1PartInPercents);
         Income bonusLvl1 = incomeRepository.save(income1);
+        bonusToLvl1.setBalanceAmount(bonusToLvl1.getBalanceAmount() + bonusLvl1.getBonusAmount());
         bonusToLvl1.getIncomes().add(bonusLvl1);
         userCredentialsRepository.save(bonusToLvl1);
 
@@ -44,6 +45,7 @@ public class IncomeService {
                 amount*referralLvl2PartInPercents,
                 userThatSendsBonuses);
         Income bonusLvl2 = incomeRepository.save(income2);
+        bonusToLvl2.setBalanceAmount(bonusToLvl2.getBalanceAmount() + bonusLvl2.getBonusAmount());
         bonusToLvl2.getIncomes().add(bonusLvl2);
         userCredentialsRepository.save(bonusToLvl2);
 

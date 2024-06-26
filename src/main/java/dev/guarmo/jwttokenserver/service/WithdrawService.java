@@ -29,6 +29,7 @@ public class WithdrawService {
 
         UserCredentials userCredentials = userCredentialsRepository.findByLogin(login).orElseThrow();
         userCredentials.getWithdraws().add(model);
+        userCredentials.setBalanceAmount(userCredentials.getBalanceAmount() - model.getWithdrawAmount());
         userCredentialsRepository.save(userCredentials);
 
         GetWithdrawDto withdrawGetDto = withdrawMapper.toGetDto(saved);

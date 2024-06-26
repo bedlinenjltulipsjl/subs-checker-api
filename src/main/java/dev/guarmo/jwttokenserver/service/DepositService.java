@@ -32,7 +32,7 @@ public class DepositService {
         List<Deposit> transactions = userCredentials.getDeposits();
         transactions.add(savedTran);
         userCredentials.setDeposits(transactions);
-
+        userCredentials.setBalanceAmount(userCredentials.getBalanceAmount() + savedTran.getAmount());
         userCredentialsRepository.save(userCredentials);
         return depositMapper.toGetDto(savedTran);
     }
