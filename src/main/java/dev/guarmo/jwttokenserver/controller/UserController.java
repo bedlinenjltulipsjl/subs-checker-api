@@ -2,6 +2,7 @@ package dev.guarmo.jwttokenserver.controller;
 
 import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
+import dev.guarmo.jwttokenserver.model.user.dto.GetContentWithoutHistoryUserDto;
 import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.service.DepositService;
@@ -32,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/{tgid}")
-    public GetContentUserDto getContentUserDtoByTgId(@PathVariable String tgid) {
+    public GetContentWithoutHistoryUserDto getContentUserDtoByTgId(@PathVariable String tgid) {
         return userService.findByLogin(tgid);
     }
 }

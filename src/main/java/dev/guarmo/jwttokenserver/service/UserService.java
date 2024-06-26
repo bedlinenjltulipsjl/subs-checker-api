@@ -4,6 +4,7 @@ import dev.guarmo.jwttokenserver.model.deposit.mapper.DepositMapper;
 import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
 import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
+import dev.guarmo.jwttokenserver.model.user.dto.GetContentWithoutHistoryUserDto;
 import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.model.user.mapper.UserMapper;
@@ -45,9 +46,9 @@ public class UserService {
         return botLink + Base64.getUrlEncoder().encodeToString(userTelegramId.getBytes(StandardCharsets.UTF_8));
     }
 
-    public GetContentUserDto findByLogin(String tgid) {
+    public GetContentWithoutHistoryUserDto findByLogin(String tgid) {
         UserCredentials userCredentials = userCredentialsRepository.findByLogin(tgid).orElseThrow();
-        return userMapper.toGetDto(userCredentials);
+        return userMapper.toGetWithoutHistoryDto(userCredentials);
     }
 
     public UserCredentials findByLoginModel(String tgid) {

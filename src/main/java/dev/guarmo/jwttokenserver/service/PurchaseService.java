@@ -34,7 +34,7 @@ public class PurchaseService {
 
         UserCredentials byLoginModel = userService.findByLoginModel(tgid);
         byLoginModel.getPurchases().add(model);
-
+        byLoginModel.setBalanceAmount(byLoginModel.getBalanceAmount() - dto.getPurchaseAmount());
         userCredentialsRepository.save(byLoginModel);
         return purchaseMapper.toGetDto(model);
 

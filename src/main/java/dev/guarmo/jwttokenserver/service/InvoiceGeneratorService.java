@@ -36,6 +36,8 @@ public class InvoiceGeneratorService {
     private final TelegramService telegramService;
     @Value("${westwallet.apikey}")
     private String apiKey;
+    @Value("${westwallet.listener.link}")
+    private String linkToApiListener;
     @Value("${westwallet.secretkey}")
     private String secretKeyString;
 
@@ -62,8 +64,8 @@ public class InvoiceGeneratorService {
             // URL and JSON data for creating invoice
             String url = "https://api.westwallet.io/address/create_invoice";
             String json = """
-                {"currencies": ["%s"], "amount": "%.2f", "ipn_url": "https://teslainvestgroup.com:6090/pay/ipn", "success_url": "https://www.youtube.com/", "ttl": 15, "label": "%s"}""";
-            json = String.format(Locale.US, json, cryptoCurrencyType, topUpAmount, userLogin);
+                {"currencies": ["%s"], "amount": "%.2f", "ipn_url": "%s", "success_url": "https://www.youtube.com/", "ttl": 15, "label": "%s"}""";
+            json = String.format(Locale.US, json, cryptoCurrencyType, topUpAmount, linkToApiListener, userLogin);
 
             String dataToEncodeForHeader = timestamp + json;
 

@@ -13,7 +13,7 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String purchaseAmount;
+    private Double purchaseAmount;
     private String description;
     @Column(updatable = false)
     @CreationTimestamp

@@ -12,7 +12,7 @@ public class GetInvoiceDto {
     private String currencyCode;
     private Double amount;
     private String address;
-    private Long label;
+    private String label;
     private String destTag;
     private String successUrl;
     private String error;

@@ -11,6 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/withdraws")
+@CrossOrigin(allowedHeaders = "*")
 public class WithdrawController {
     private final WithdrawService withdrawService;
 
