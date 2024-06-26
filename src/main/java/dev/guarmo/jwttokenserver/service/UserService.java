@@ -15,7 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -53,5 +56,13 @@ public class UserService {
 
     public UserCredentials findByLoginModel(String tgid) {
         return userCredentialsRepository.findByLogin(tgid).orElseThrow();
+    }
+
+    public HashMap<GetContentWithoutHistoryUserDto, List<GetContentWithoutHistoryUserDto>> getFourLevelsReferralTree(String tgid) {
+//        UserCredentials userCredentials = userCredentialsRepository.findByLogin(tgid).orElseThrow();
+//        HashMap<GetContentWithoutHistoryUserDto, List<GetContentWithoutHistoryUserDto>> hashMap = new HashMap<>();
+//
+//        hashMap.put(userMapper.toGetWithoutHistoryDto(userCredentials.getUpperReferral()), List.of(userMapper.toGetWithoutHistoryDto(userCredentials)));
+        return null;
     }
 }

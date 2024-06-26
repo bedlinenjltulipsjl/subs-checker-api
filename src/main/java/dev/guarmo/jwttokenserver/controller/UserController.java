@@ -10,6 +10,8 @@ import dev.guarmo.jwttokenserver.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
@@ -28,8 +30,8 @@ public class UserController {
     }
 
     @GetMapping("/reftree/{tgid}")
-    public String getReferralsTree(@PathVariable String tgid) {
-        return "Hallo Numa Numa 2";
+    public List<GetContentWithoutHistoryUserDto> getReferralsTree(@PathVariable String tgid) {
+        return userService.getFourLevelsReferralTree(tgid);
     }
 
     @GetMapping("/{tgid}")
