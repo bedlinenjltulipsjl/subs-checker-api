@@ -9,7 +9,9 @@ import dev.guarmo.jwttokenserver.model.user.dto.*;
 import dev.guarmo.jwttokenserver.model.withdraw.MoneyWithdraw;
 import org.mapstruct.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper(config = MapperConfig.class, uses = {UserMapperHelper.class})
 public interface UserMapper {
@@ -50,5 +52,32 @@ public interface UserMapper {
         dto.setIncomeIds(incomeIds);
     }
 
+    @Mapping(target = "bottomReferral", ignore = true)
+    @Mapping(target = "treeLevel", ignore = true)
     GetUserWithReferralsDto toGetWithReferralsDto(UserCredentials user);
+
+    @AfterMapping
+    default void mapReferralsAfterMapping(@MappingTarget GetUserWithReferralsDto dto, UserCredentials model) {
+        mapReferrals(dto, model, 0);
+    }
+
+    default void mapReferrals(GetUserWithReferralsDto dto, UserCredentials model, int level) {
+        dto.setTreeLevel(level);
+
+        // Sets recursion basis (how deep fetch referrals)
+        if (level >= 3) {
+            dto.setBottomReferral(Collections.emptyList());
+            return;
+        }
+
+        List<GetUserWithReferralsDto> referrals = model.getBottomReferrals()
+                .stream()
+                .map(referral -> {
+                    GetUserWithReferralsDto referralDto = toGetWithReferralsDto(referral);
+                    mapReferrals(referralDto, referral, level + 1);
+                    return referralDto;
+                })
+                .collect(Collectors.toList());
+        dto.setBottomReferral(referrals);
+    }
 }

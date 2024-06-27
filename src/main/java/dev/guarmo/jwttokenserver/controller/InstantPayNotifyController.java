@@ -27,13 +27,16 @@ public class InstantPayNotifyController {
     @PostMapping(value = "/pay/ipn", consumes = "application/x-www-form-urlencoded")
     public ResponseEntity<String> handlePaymentNotification(@RequestBody MultiValueMap<String, String> formData) {
         GetDepositDto getDepositDto = depositService.addTransactionToUser(formData);
-        var bonuses = incomeService.addBonusUpperReferrals(getDepositDto.getAmount(), getDepositDto.getLabel());
+        if (getDepositDto.getStatus().equals("completed")) {
+//            String infoForIncomeTransaction = westWalletService.getInfoForIncomeTransaction(6723982);
 
-        telegramService.sendNotificationAboutSuccessTransaction(getDepositDto);
-        bonuses.forEach(telegramService::sendNotificationAboutAssignedBonus);
+            var bonuses = incomeService.addBonusUpperReferrals(getDepositDto.getAmount(), getDepositDto.getLabel());
+            telegramService.sendNotificationAboutSuccessTransaction(getDepositDto);
+            bonuses.forEach(telegramService::sendNotificationAboutAssignedBonus);
+            log.info("Saved this bonus to this user: {}", bonuses);
+        }
 
         log.info("Received Payment Notification: {}", getDepositDto);
-        log.info("Saved this bonus to this user: {}", bonuses);
         return ResponseEntity.ok("Thanks, notification received");
     }
 }

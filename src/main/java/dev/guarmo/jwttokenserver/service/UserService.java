@@ -3,10 +3,7 @@ package dev.guarmo.jwttokenserver.service;
 import dev.guarmo.jwttokenserver.model.deposit.mapper.DepositMapper;
 import dev.guarmo.jwttokenserver.model.user.RoleStatus;
 import dev.guarmo.jwttokenserver.model.user.UserCredentials;
-import dev.guarmo.jwttokenserver.model.user.dto.GetContentUserDto;
-import dev.guarmo.jwttokenserver.model.user.dto.GetContentWithoutHistoryUserDto;
-import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
-import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
+import dev.guarmo.jwttokenserver.model.user.dto.*;
 import dev.guarmo.jwttokenserver.model.user.mapper.UserMapper;
 import dev.guarmo.jwttokenserver.repository.UserCredentialsRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,9 +32,13 @@ public class UserService {
         UserCredentials model = userMapper.toModel(user);
         model.setRole(role);
         model.setPassword(passwordEncoder.encode(user.getPassword()));
-
         UserCredentials save = repository.save(model);
-        return userMapper.toGetCredentialsDto(model);
+
+        UserCredentials upperReferral = model.getUpperReferral();
+        upperReferral.getBottomReferrals().add(save);
+
+        UserCredentials save1 = repository.save(upperReferral);
+        return userMapper.toGetCredentialsDto(save);
     }
 
     public GetUserCredentialsDto getByCredentialsByLogin(String login) {
@@ -58,11 +59,14 @@ public class UserService {
         return userCredentialsRepository.findByLogin(tgid).orElseThrow();
     }
 
-    public HashMap<GetContentWithoutHistoryUserDto, List<GetContentWithoutHistoryUserDto>> getFourLevelsReferralTree(String tgid) {
-//        UserCredentials userCredentials = userCredentialsRepository.findByLogin(tgid).orElseThrow();
+    public GetUserWithReferralsDto getFourLevelsReferralTree(String tgid) {
+        UserCredentials userCredentials = userCredentialsRepository.findByLogin(tgid).orElseThrow();
+        GetUserWithReferralsDto getWithReferralsDto = userMapper.toGetWithReferralsDto(userCredentials);
 //        HashMap<GetContentWithoutHistoryUserDto, List<GetContentWithoutHistoryUserDto>> hashMap = new HashMap<>();
 //
 //        hashMap.put(userMapper.toGetWithoutHistoryDto(userCredentials.getUpperReferral()), List.of(userMapper.toGetWithoutHistoryDto(userCredentials)));
-        return null;
+//        hashMap.put(userMapper.toGetWithoutHistoryDto(userCredentials), userCredentials.getBottomReferrals().stream().map(userMapper::toGetWithoutHistoryDto).toList());
+//        hashMap.put(userMapper.toGetWithoutHistoryDto(userCredentials), userCredentials.getBottomReferrals().stream().map(userMapper::toGetWithoutHistoryDto).toList());
+        return getWithReferralsDto;
     }
 }

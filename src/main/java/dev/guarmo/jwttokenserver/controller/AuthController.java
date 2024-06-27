@@ -6,6 +6,7 @@ import dev.guarmo.jwttokenserver.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.jwttokenserver.model.user.dto.PostUserDto;
 import dev.guarmo.jwttokenserver.security.TokenService;
 import dev.guarmo.jwttokenserver.service.UserService;
+import dev.guarmo.jwttokenserver.service.WestWalletService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ public class AuthController {
 
     private final TokenService tokenService;
     private final UserService userService;
+    private final WestWalletService westWalletService;
 
     @PostMapping("/token")
     public String token(Authentication authentication) {
