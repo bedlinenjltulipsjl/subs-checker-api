@@ -65,7 +65,7 @@ public interface UserMapper {
         dto.setTreeLevel(level);
 
         // Sets recursion basis (how deep fetch referrals)
-        if (level >= 3) {
+        if (level >= 2) {
             dto.setBottomReferral(Collections.emptyList());
             return;
         }
